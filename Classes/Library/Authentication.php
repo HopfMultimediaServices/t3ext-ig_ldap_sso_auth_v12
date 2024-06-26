@@ -426,7 +426,7 @@ class Authentication
 
                     $typo3Group = Typo3GroupRepository::fetch(
                         $groupTable,
-                        $typo3_group_merged['uid']
+                        (int)$typo3_group_merged['uid']
                     );
                     $typo3_groups[] = $typo3Group[0];
                 }
