@@ -161,15 +161,20 @@ class Typo3GroupRepository
             throw new InvalidUserGroupTableException('Invalid table "' . $table . '"', 1404891867);
         }
 
-        $affectedRows = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getConnectionForTable($table)
-            ->update(
-                $table,
-                $data,
-                [
-                    'uid' => (int)$data['uid'],
-                ]
-            );
+        $affectedRows = 0;
+
+        if(isset($data['uid'])) {
+            $affectedRows = GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getConnectionForTable($table)
+                ->update(
+                    $table,
+                    $data,
+                    [
+                        'uid' => (int)$data['uid'],
+                    ]
+                );
+        }
+
         $success = $affectedRows === 1;
 
         if ($success) {
