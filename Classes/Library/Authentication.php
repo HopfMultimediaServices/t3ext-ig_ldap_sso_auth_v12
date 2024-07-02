@@ -700,7 +700,7 @@ class Authentication
 			// Context is a singleton, so we can get the current Context by instantiation
 			$currentContext = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class);
 
-			$pageArguments = GeneralUtility::makeInstance(PageArguments::class, $pageId, PageRepository::DOKTYPE_SYSFOLDER, []);
+			$pageArguments = GeneralUtility::makeInstance(PageArguments::class, $pageId, (string)PageRepository::DOKTYPE_SYSFOLDER);
 			$frontendUserAuthentication = GeneralUtility::makeInstance(FrontendUserAuthentication::class);
 
 			// Use Site & Context to instantiate TSFE properly for TYPO3 v10+
